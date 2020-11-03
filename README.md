@@ -1,24 +1,57 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users　テーブル
 
-Things you may want to cover:
+| Column           | Type    | Option   |
+| ---------------- | ------- | -------- |
+| nickname         | string  | NOT NULL |
+| family_name      | string  | NOT NULL |
+| first_name       | string  | NOT NULL |
+| family_name_kana | string  | NOT NULL |
+| first_name_kana  | string  | NOT NULL |
+| email            | string  | NOT NULL |
+| password         | string  | NOT NULL |
+| birth_year       | integer | NOT NULL |
+| birth_month      | integer | NOT NULL |
+| birth_day        | integer | NOT NULL |
 
-* Ruby version
+###Association
+-has_many :items
+-has_many :orders
 
-* System dependencies
 
-* Configuration
+## items テーブル
 
-* Database creation
+| Column           | Type       | Option      |
+| ---------------- | ---------- | ----------- |
+| category         | string     | NOT NULL    | 
+| price            | integer    | NOT NULL    |
+| image            |            | NOT NULL    |
+| item_name        | string     | NOT NULL    |
+| condition        | string     | NOT NULL    |
+| delivery_charge  | integer    | NOT NULL    |
+| prefecture       | string     | NOT NULL    |
+| delivery_days    | integer    | NOT NULL    |
+| user             | references |             | 
 
-* Database initialization
+###Association
+-belongs_to :user
+-has_one :order
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+## orders テーブル
 
-* Deployment instructions
+| Column           | Type       | Option      |
+| ---------------- | -------    | ----------- |
+| zip              | integer    | NOT NULL    |
+| prefecture       | string     | NOT NULL    |
+| city             | string     | NOT NULL    |
+| block            | integer    | NOT NULL    |
+| building         | string     |             |
+| phone_number     | integer    | NOT NULL    |
+| user             | references |             |
+| item             | references |             |
 
-* ...
+###Association
+-belongs_to :user
+-belongs_to :item
