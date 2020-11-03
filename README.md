@@ -2,18 +2,17 @@
 
 ## users　テーブル
 
-| Column           | Type    | Option   |
-| ---------------- | ------- | -------- |
-| nickname         | string  | NOT NULL |
-| family_name      | string  | NOT NULL |
-| first_name       | string  | NOT NULL |
-| family_name_kana | string  | NOT NULL |
-| first_name_kana  | string  | NOT NULL |
-| email            | string  | NOT NULL |
-| password         | string  | NOT NULL |
-| birth_year       | integer | NOT NULL |
-| birth_month      | integer | NOT NULL |
-| birth_day        | integer | NOT NULL |
+| Column             | Type    | Option      |
+| ------------------ | ------- | --------    |
+| nickname           | string  | null: false |
+| family_name        | string  | null: false |
+| first_name         | string  | null: false |
+| family_name_kana   | string  | null: false |
+| first_name_kana    | string  | null: false |
+| email              | string  | null: false |
+| encrypted_password | string  | null: false |
+| birthday           | date    | null: false |
+
 
 ###Association
 -has_many :items
@@ -22,36 +21,48 @@
 
 ## items テーブル
 
-| Column           | Type       | Option      |
-| ---------------- | ---------- | ----------- |
-| category         | string     | NOT NULL    | 
-| price            | integer    | NOT NULL    |
-| image            |            | NOT NULL    |
-| item_name        | string     | NOT NULL    |
-| condition        | string     | NOT NULL    |
-| delivery_charge  | integer    | NOT NULL    |
-| prefecture       | string     | NOT NULL    |
-| delivery_days    | integer    | NOT NULL    |
-| user             | references |             | 
+| Column             | Type       | Option                         |
+| ------------------ | ---------- | -----------------------------  |
+| category_id        | integer    | null: false                    | 
+| price              | integer    | null: false                    |
+| item_name          | string     | null: false                    |
+| condition_id       | integer    | null: false                    |
+| delivery_charge_id | integer    | null: false                    |
+| prefecture_id      | integer    | null: false                    |
+| delivery_days_id   | integer    | null: false                    |
+| user               | references | null: false, foreign_key: true | 
 
 ###Association
 -belongs_to :user
 -has_one :order
 
 
-## orders テーブル
+## orders　テーブル
 
-| Column           | Type       | Option      |
-| ---------------- | -------    | ----------- |
-| zip              | integer    | NOT NULL    |
-| prefecture       | string     | NOT NULL    |
-| city             | string     | NOT NULL    |
-| block            | integer    | NOT NULL    |
-| building         | string     |             |
-| phone_number     | integer    | NOT NULL    |
-| user             | references |             |
-| item             | references |             |
+| Column             | Type       | Option                          |
+| ------------------ | ---------- | ------------------------------  |
+| user               | references | null: false , foreign_key: true | 
+| item               | references | null: false , foreign_key: true |
 
 ###Association
 -belongs_to :user
 -belongs_to :item
+-has_one :address
+
+
+## addresses テーブル
+
+| Column           | Type       | Option                          |
+| ---------------- | -------    | ------------------------------- |
+| zip              | string     | null: false                     |
+| prefecture_id    | integer    | null: false                     |
+| city             | string     | null: false                     |
+| block            | string     | null: false                     |
+| building         | string     |                                 |
+| phone_number     | integer    | null: false                     |
+| order            | references | null: false , foreign_key: true |
+
+###Association
+-belongs_to :order
+
+
