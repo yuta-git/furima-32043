@@ -26,6 +26,7 @@
 | category_id        | integer    | null: false                    | 
 | price              | integer    | null: false                    |
 | item_name          | string     | null: false                    |
+| item_description   | text       | null: false                    |
 | condition_id       | integer    | null: false                    |
 | delivery_charge_id | integer    | null: false                    |
 | prefecture_id      | integer    | null: false                    |
