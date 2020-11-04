@@ -84,7 +84,23 @@ RSpec.describe User, type: :model do
     it 'パスワードは半角英数の混合での入力が必須であること' do
       @user.password = '123456'
       @user.valid?
-      expect(@user.errors.full_messages).to include('Password Password Include both letters and numbers')
+      expect(@user.errors.full_messages).to include('Password is invalid. Include both letters and numbers')
+    end
+
+    it 'ユーザーの名字と名前が漢字・ひらがな・カタカナでないと登録できないこと' do
+      @user.family_name = 'abcde'
+      @user.first_name = 'abcde'
+      @user.valid?
+      expect(@user.errors.full_messages).to include('Family name is invalid. Input full-width characters.',
+                                                    'First name is invalid. Input full-width characters.')
+    end
+
+    it 'ユーザーの名字と名前のフリガナが全角カタカナでないと登録できないこと' do
+      @user.family_name_kana = '伊藤'
+      @user.first_name_kana = '裕太'
+      @user.valid?
+      expect(@user.errors.full_messages).to include('Family name kana is invalid. Input full-width katakana characters.',
+                                                    'First name kana is invalid. Input full-width katakana characters.')
     end
   end
 end
