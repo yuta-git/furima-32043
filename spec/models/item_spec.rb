@@ -47,7 +47,7 @@ RSpec.describe Item, type: :model do
     end
 
     it '発送元の地域についての情報が入力されていないと登録できないこと' do
-      @item.prefecture = nil
+      @item.prefecture_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include("Prefecture can't be blank")
     end
