@@ -6,6 +6,10 @@ RSpec.describe OrderAddress, type: :model do
       @order_address = FactoryBot.build(:order_address)
     end
 
+    it "値が正常に入っている場合は購入できること" do
+      expect(@order_address).to be_valid
+    end
+
     it '郵便番号が入っていないと購入できないこと' do
       @order_address.zip = ''
       @order_address.valid?
