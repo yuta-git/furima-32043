@@ -6,7 +6,7 @@ RSpec.describe OrderAddress, type: :model do
       @order_address = FactoryBot.build(:order_address)
     end
 
-    it "値が正常に入っている場合は購入できること" do
+    it '値が正常に入っている場合は購入できること' do
       expect(@order_address).to be_valid
     end
 
