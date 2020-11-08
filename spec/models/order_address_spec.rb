@@ -10,6 +10,11 @@ RSpec.describe OrderAddress, type: :model do
       expect(@order_address).to be_valid
     end
 
+    it '建物名が入っていなくても購入できること' do
+      @order_address.building = nil
+      expect(@order_address).to be_valid
+    end
+
     it '郵便番号が入っていないと購入できないこと' do
       @order_address.zip = ''
       @order_address.valid?
