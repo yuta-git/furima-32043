@@ -1,16 +1,9 @@
 function list() {
   const pullDownButton = document.getElementById("lists")
   const pullDownParents = document.getElementById("pull-down")
-  
-  pullDownButton.addEventListener('mouseover', function(){
-    this.setAttribute("style", "background-color:#FFBEDA;")
-  });
 
-  pullDownButton.addEventListener('mouseout', function(){
-    this.removeAttribute("style", "background-color:#FFBEDA;")
-  });
 
-  pullDownButton.addEventListener('click', function() {
+  pullDownButton.addEventListener('mouseover', function() {
     if (pullDownParents.getAttribute("style") == "display:block;") {
       pullDownParents.removeAttribute("style", "display:block;")
     } else {
@@ -18,8 +11,30 @@ function list() {
     }
   });
 
+  pullDownButton.addEventListener('mouseout', function() {
+    if (pullDownParents.getAttribute("style") == "display:block;") {
+      pullDownParents.removeAttribute("style", "display:block;")
+    } else {
+      pullDownParents.setAttribute("style", "display:block;")
+    }
+  });
+
+  pullDownParents.addEventListener('mouseover', function() {
+    if (pullDownParents.getAttribute("style") == "display:block;") {
+      pullDownParents.removeAttribute("style", "display:block;")
+    } else {
+      pullDownParents.setAttribute("style", "display:block;")
+    }
+  });
   
+  pullDownParents.addEventListener('mouseout', function() {
+    if (pullDownParents.getAttribute("style") == "display:block;") {
+      pullDownParents.removeAttribute("style", "display:block;")
+    } else {
+      pullDownParents.setAttribute("style", "display:block;")
+    }
+  });
  
 };
 
-window.addEventListener('load', list)
+window.addEventListener('load', list);
