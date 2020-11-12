@@ -39,6 +39,11 @@ class ItemsController < ApplicationController
     redirect_to action: :index
   end
 
+  def search
+    @items = Item.search(params[:keyword])
+    @keyword = params[:keyword]
+  end
+
   private
 
   def set_item

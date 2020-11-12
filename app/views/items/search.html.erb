@@ -2,12 +2,12 @@
 <div class='main'>
 
   <div class="title-parent">
-    <div class='title-child'><%= @category.name %></div>
-      <div class="keyword">の商品一覧</div>
+    <div class='title-child'><%= @keyword %> </div>
+    <div class="keyword"> の検索結果</div>
   </div>
     
   <div class='item-contents'>
-      <ul class='item-lists'>
+    <ul class='item-lists'>
       <% @items.each do |item| %>
         <li class='list'>
           <%= link_to item_path(item) do %>

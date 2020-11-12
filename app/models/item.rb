@@ -1,4 +1,12 @@
 class Item < ApplicationRecord
+  def self.search(search)
+    if search != ""
+      Item.where('item_name LIKE(?)', "%#{search}%").or(where('item_description LIKE(?)', "%#{search}%"))
+    else
+      Item.all
+    end
+  end
+
   with_options presence: true do
     validates :item_name
     validates :item_description
