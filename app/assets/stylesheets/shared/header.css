@@ -64,6 +64,8 @@
   text-decoration: none;
   margin-right: 3vw;
   color: #333333;
+  font-weight: bold;
+  font-size: 1.1em;
 }
 
 .brand-list {
@@ -101,4 +103,32 @@
 .sign-up {
   text-decoration: none;
   color: #333333;
+}
+
+.hidden{
+  display: none;
+}
+
+.show-lists{
+  width: 220px;
+  position: absolute;
+  top: 100px;
+  background-color: #ffffff;
+  z-index: 1;
+}
+
+.category {
+  text-decoration: none;
+  color: #333333;
+  display: block;
+}
+
+.category:hover{
+  color: white;
+  background-color: #3ccace;
+}
+
+.category-list:hover{
+  color: blue;
+  cursor: pointer; 
 }
