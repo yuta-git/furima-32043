@@ -185,7 +185,7 @@
 
 .links {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   width: 50vw;
 
 }
@@ -194,6 +194,7 @@
   font-size: 30px;
   text-decoration: none;
   color: #3CCACE;
+  
 }
 
 .another-item {
